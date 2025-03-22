@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import ShowStockTable from "./ShowStockTable/ShowStockTable";
+import Loader from "../Shared/Loader";
 
 const StockChart = () => {
   const [data, setData] = useState([]);
   const [tradeCode, setTradeCode] = useState("1JANATAMF");
   const [tradeCodes, setTradeCodes] = useState([]);
-  const [loading, setLoading] = useState(true);  // New loading state
+  const [loading, setLoading] = useState(true);  
 
   // Fetch available trade codes
   useEffect(() => {
@@ -29,7 +30,7 @@ const StockChart = () => {
   // Fetch stock data when tradeCode changes
   useEffect(() => {
     if (tradeCode) {
-      setLoading(true); // Start loading while fetching data
+      setLoading(true); 
       axios.get(`http://localhost:5000/stocks/${tradeCode}`)
         .then(response => {
           // console.log("Stock Data:", response.data);
@@ -44,7 +45,7 @@ const StockChart = () => {
   }, [tradeCode]);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state while fetching data
+    return <div><Loader /></div>; 
   }
 
   return (
@@ -60,7 +61,7 @@ const StockChart = () => {
             </option>
           ))
         ) : (
-          <option value="">No trade codes available</option>  // Handle empty data gracefully
+          <option value="">No trade codes available</option> 
         )}
       </select>
 
@@ -89,7 +90,7 @@ const StockChart = () => {
         </BarChart>
       </ResponsiveContainer>
 
-      {/* Show Stock Table Component */}
+      
       <ShowStockTable tradeCode={tradeCode} />
     </div>
   );
