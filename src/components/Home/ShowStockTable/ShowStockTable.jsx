@@ -18,7 +18,7 @@ const ShowStockTable = ({ tradeCode }) => {
 
   // Handle Edit Click
   const handleEdit = (stock) => {
-    setSelectedStock({ ...stock }); // Clone stock object
+    setSelectedStock({ ...stock }); 
     setIsModalOpen(true);
   };
 
@@ -41,14 +41,14 @@ const ShowStockTable = ({ tradeCode }) => {
         )
       );
 
-      setIsModalOpen(false); // Close modal
+      setIsModalOpen(false); 
     } catch (error) {
       console.error("Error updating stock:", error);
     }
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close modal
+    setIsModalOpen(false); 
   };
 
   // Handle Delete Click
@@ -64,13 +64,9 @@ const ShowStockTable = ({ tradeCode }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          // Perform delete request
           await axios.delete(`http://localhost:5000/stocks/${id}`);
   
-          // Remove the deleted stock from the state
           setStocks((prevStocks) => prevStocks.filter((stock) => stock.id !== id));
-  
-          // Show success message
           Swal.fire({
             title: "Deleted!",
             text: "Your stock has been deleted.",
@@ -78,8 +74,6 @@ const ShowStockTable = ({ tradeCode }) => {
           });
         } catch (error) {
           console.error("Error deleting stock:", error);
-  
-          // Show error message
           Swal.fire({
             title: "Error!",
             text: "There was an error deleting the stock.",
