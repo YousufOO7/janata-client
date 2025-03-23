@@ -3,6 +3,7 @@ import axios from "axios";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import ShowStockTable from "./ShowStockTable/ShowStockTable";
 import Loader from "../Shared/Loader";
+import { format } from "date-fns";
 
 const StockChart = () => {
   const [data, setData] = useState([]);
@@ -33,8 +34,12 @@ const StockChart = () => {
       setLoading(true); 
       axios.get(`http://localhost:5000/stocks/${tradeCode}`)
         .then(response => {
-          // console.log("Stock Data:", response.data);
-          setData(response.data);
+          const formattedData = response.data.map((item) => ({
+            ...item,
+            date: item.date ? format(new Date(item.date), "yyyy-MM-dd") : "N/A",
+          }));
+
+          setData(formattedData);
           setLoading(false);
         })
         .catch(error => {
@@ -45,12 +50,12 @@ const StockChart = () => {
   }, [tradeCode]);
 
   if (loading) {
-    return <div><Loader /></div>; 
+    return <div className="flex min-h-screen justify-center items-center"><Loader /></div>; 
   }
 
   return (
     <div>
-      <h2>Stock Market Visualization: {tradeCode}</h2>
+      <h2 className="text-center text-4xl font-semibold my-3 underline">Stock Market Visualization: {tradeCode}</h2>
 
       <label>Select Trade Code: </label>
       <select onChange={(e) => setTradeCode(e.target.value)} value={tradeCode}>
