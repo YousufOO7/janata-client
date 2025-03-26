@@ -54,8 +54,8 @@ const StockChart = () => {
   }
 
   return (
-    <div>
-      <h2 className="text-center text-4xl font-semibold my-3 underline">Stock Market Visualization: {tradeCode}</h2>
+    <div className="px-5 lg:px-10">
+      <h2 className="text-center md:text-4xl font-semibold my-3 underline">Stock Market Visualization: {tradeCode}</h2>
 
       <label>Select Trade Code: </label>
       <select onChange={(e) => setTradeCode(e.target.value)} value={tradeCode}>
