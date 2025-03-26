@@ -1,12 +1,5 @@
-# React + Vite
+<h1>Project Name: Janata Stock Market</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>Drive Link: https://drive.google.com/file/d/18JHn-ZmwiaTkuzycCWeMiA_wEZgskjiM/view?usp=sharing</h2>
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<p>Description: I developed a website using MySQL and Node.js for the backend and React.js for the frontend. Since I specialize in the MERN stack, working with MySQL was a new challenge for me. I spent 1-2 days exploring MySQL to understand its implementation. While I successfully completed the project by March 23rd, I faced difficulties deploying the backend for free, which prevented me from making the project live. I hope you take this into consideration.</p>
